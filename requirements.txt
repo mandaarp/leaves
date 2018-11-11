@@ -1,0 +1,6 @@
+eyeD3==0.8.7
+grako==3.99.9
+mutagen==1.41.1
+pathlib==1.0.1
+python-magic==0.4.15
+six==1.11.0
