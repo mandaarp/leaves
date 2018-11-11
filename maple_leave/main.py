@@ -3,8 +3,9 @@ __author__ = 'mandar'
 from mutagen import mp3
 import glob, re, os, sys
 
-TEST_FILE = r'path-to-test-file'
-TEST_FOLDER = r'path-to-test-folder'
+TEST_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'sample_audio.mp3')
+TEST_FOLDER = os.path.dirname(os.path.realpath(__file__))
+TEST_REGEX_LIST = ['test']
 
 def load_files(path):
     '''
@@ -23,7 +24,7 @@ def load_files(path):
     print(str(len(mp3_files)) + ' MP3 files found.')
     return mp3_files
 
-def clean_files(folder_path, regex_list):
+def clean_files(folder_path, regex_list=TEST_REGEX_LIST):
     mp3_files = load_files(path=folder_path)
     for file in mp3_files:
         for regex in regex_list:
@@ -73,4 +74,4 @@ def clean_tags(id3_instance, regex):
     id3_instance.save()
 
 if __name__ == '__main__':
-    clean_files(folder_path=TEST_FOLDER, regex_list=[])
+    clean_files(folder_path=TEST_FOLDER, regex_list=TEST_REGEX_LIST)
